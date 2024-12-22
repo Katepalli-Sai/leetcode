@@ -1,0 +1,33 @@
+1941. Check if All Characters Have Equal Number of Occurrences
+
+
+class Solution {
+    public boolean areOccurrencesEqual(String s) {
+        HashMap<Character,Integer> hm = new HashMap<>();
+        for(char c:s.toCharArray()){
+            hm.put(c,hm.getOrDefault(c,0)+1);
+        }
+        HashSet<Integer> hs = new HashSet<>(hm.values());
+        return hs.size()==1;
+        
+    }
+}
+Explanation:
+When we write return frequencySet.size() == 1; in the code, it checks whether the frequencySet contains only one unique value.
+
+What Does frequencySet.size() == 1 Mean?
+frequencySet: A HashSet only stores unique elements.
+If the size of the frequencySet is 1, it means that all characters in the string have the same frequency because only one unique frequency exists.
+Example Explanation:
+For input "abacbc":
+
+Character frequencies: {a=2, b=2, c=2}.
+The frequencySet will contain {2} (since all characters have the same frequency).
+frequencySet.size() is 1 → Return true.
+For input "aaabb":
+
+Character frequencies: {a=3, b=2}.
+The frequencySet will contain {3, 2} (since characters have different frequencies).
+frequencySet.size() is 2 → Return false.
+Why frequencySet.size() == 1?
+The condition ensures that all character frequencies in the string are the same because a HashSet removes duplicates. If all frequencies are identical, the HashSet will only contain one unique value, making its size 1.
